@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Loja Stitch - Vitrine e Carrinho</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #cce7ff;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    /* Vitrine */
+    .vitrine {
+      flex: 1 1 600px;
+      max-width: 600px;
+      background: #e6f0ff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 8px #004080aa;
+      height: 80vh;
+      overflow-y: auto;
+    }
+    .produto {
+      border: 2px solid #004080;
+      border-radius: 8px;
+      background-color: #f0f8ff;
+      margin-bottom: 20px;
+      padding: 15px;
+      text-align: center;
+    }
+    .produto img {
+      width: 150px;
+      height: auto;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .produto h3 {
+      color: #003366;
+      margin: 8px 0;
+    }
+    .produto p.preco {
+      color: #004080;
+      font-weight: bold;
+      margin: 8px 0;
+      font-size: 1.2em;
+    }
+    .produto button {
+      background-color: #004080;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+    .produto button:hover {
+      background-color: #002952;
+    }
+
+    /* Carrinho */
+    .carrinho {
+      flex: 1 1 350px;
+      max-width: 350px;
+      background: #e6f0ff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 8px #004080aa;
+      height: 80vh;
+      overflow-y: auto;
+    }
+    .carrinho h2 {
+      color: #003366;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .item-carrinho {
+      border-bottom: 1px solid #004080aa;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .item-info {
+      flex: 2;
+      font-weight: bold;
+      color: #002952;
+    }
+    .item-quantidade {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .item-quantidade button {
+      background-color: #004080;
+      color: white;
+      border: none;
+      padding: 4px 10px;
+      cursor: pointer;
+      border-radius: 3px;
+      font-weight: bold;
+      font-size: 16px;
+      user-select: none;
+    }
+    .item-quantidade span {
+      min-width: 20px;
+      text-align: center;
+      display: inline-block;
+    }
+    .item-preco {
+      flex: 1;
+      text-align: right;
+      font-weight: bold;
+      color: #004080;
+    }
+    .total {
+      font-size: 1.3em;
+      font-weight: bold;
+      text-align: right;
+      margin-top: 20px;
+      color: #002952;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="vitrine">
+    <h2>Vitrine de Produtos Stitch</h2>
+
+    <div class="produto" data-id="1" data-nome="Boné Stitch" data-preco="59.90">
+      <img src="img/bone.jpg" alt="Boné Stitch" />
+      <h3>Boné Stitch</h3>
+      <p class="preco">R$ 59,90</p>
+      <button onclick="adicionarAoCarrinho(1)">Adicionar ao carrinho</button>
+    </div>
+
+    <div class="produto" data-id="2" data-nome="Camiseta Stitch Azul" data-preco="69.90">
+      <img src="img/camiseta.jpg" alt="Camiseta Stitch Azul" />
+      <h3>Camiseta Stitch Azul</h3>
+      <p class="preco">R$ 69,90</p>
+      <button onclick="adicionarAoCarrinho(2)">Adicionar ao carrinho</button>
+    </div>
+
+    <div class="produto" data-id="3" data-nome="Caneca Stitch" data-preco="39.90">
+      <img src="img/caneca.jpg" alt="Caneca Stitch" />
+      <h3>Caneca Stitch</h3>
+      <p class="preco">R$ 39,90</p>
+      <button onclick="adicionarAoCarrinho(3)">Adicionar ao carrinho</button>
+    </div>
+
+    <div class="produto" data-id="4" data-nome="Chaveiro Stitch" data-preco="25.90">
+      <img src="img/chaveiro.jpg" alt="Chaveiro Stitch" />
+      <h3>Chaveiro Stitch</h3>
+      <p class="preco">R$ 25,90</p>
+      <button onclick="adicionarAoCarrinho(4)">Adicionar ao carrinho</button>
+    </div>
+
+    <div class="produto" data-id="5" data-nome="Mochila Stitch" data-preco="129.90">
+      <img src="img/mochila.jpg" alt="Mochila Stitch" />
+      <h3>Mochila Stitch</h3>
+      <p class="preco">R$ 129,90</p>
+      <button onclick="adicionarAoCarrinho(5)">Adicionar ao carrinho</button>
+    </div>
+
+    <div class="produto" data-id="6" data-nome="Pelúcia Stitch" data-preco="89.90">
+      <img src="img/pelucia.jpg" alt="Pelúcia Stitch" />
+      <h3>Pelúcia Stitch</h3>
+      <p class="preco">R$ 89,90</p>
+      <button onclick="adicionarAoCarrinho(6)">Adicionar ao carrinho</button>
+    </div>
+  </section>
+
+  <section class="carrinho">
+    <h2>Carrinho de Compras</h2>
+    <div id="itens-carrinho"></div>
+    <div class="total" id="total-carrinho">Total: R$ 0,00</div>
+  </section>
+
+  <script>
+    // Array para armazenar os itens do carrinho
+    let carrinho = [];
+
+    function adicionarAoCarrinho(id) {
+      // Buscar produto pela id
+      const produto = document.querySelector(`.produto[data-id="${id}"]`);
+      const nome = produto.getAttribute('data-nome');
+      const preco = parseFloat(produto.getAttribute('data-preco'));
+
+      // Verifica se produto já está no carrinho
+      const itemExistente = carrinho.find(item => item.id === id);
+
+      if (itemExistente) {
+        itemExistente.quantidade++;
+      } else {
+        carrinho.push({ id, nome, preco, quantidade: 1 });
+      }
+      atualizarCarrinho();
+    }
+
+    function removerDoCarrinho(id) {
+      carrinho = carrinho.filter(item => item.id !== id);
+      atualizarCarrinho();
+    }
+
+    function alterarQuantidade(id, delta) {
+      const item = carrinho.find(i => i.id === id);
+      if (!item) return;
+
+      item.quantidade += delta;
+      if (item.quantidade <= 0) {
+        removerDoCarrinho(id);
+      }
+      atualizarCarrinho();
+    }
+
+    function atualizarCarrinho() {
+      const container = document.getElementById('itens-carrinho');
+      container.innerHTML = '';
+
+      if (carrinho.length === 0) {
+        container.innerHTML = '<p>Carrinho vazio</p>';
+        document.getElementById('total-carrinho').textContent = 'Total: R$ 0,00';
+        return;
+      }
+
+      let total = 0;
+
+      carrinho.forEach(item => {
+        const precoTotalItem = item.preco * item.quantidade;
+        total += precoTotalItem;
+
+        const div = document.createElement('div');
+        div.className = 'item-carrinho';
+
+        div.innerHTML = `
+          <div class="item-info">${item.nome}</div>
+          <div class="item-quantidade">
+            <button onclick="alterarQuantidade(${item.id}, -1)">-</button>
+            <span>${item.quantidade}</span>
+            <button onclick="alterarQuantidade(${item.id}, 1)">+</button>
+          </div>
+          <div class="item-preco">R$ ${precoTotalItem.toFixed(2).replace('.', ',')}</div>
+        `;
+
+        container.appendChild(div);
+      });
+
+      document.getElementById('total-carrinho').textContent = `Total: R$ ${total.toFixed(2).replace('.', ',')}`;
+    }
+  </script>
+</body>
+</html>
